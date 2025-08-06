@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+ethusdt:
+  symbol: ETHUSDT
+  threshold: 1
+  direction: up
+
+btcusdt:
+  symbol: BTCUSDT
+  threshold: 1
+  direction: down
