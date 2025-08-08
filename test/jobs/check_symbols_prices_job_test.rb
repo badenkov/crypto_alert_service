@@ -9,8 +9,10 @@ class CheckSymbolsPricesJobTest < ActiveJob::TestCase
     btcusdt.update_columns(price_threshold: 116_652, status: :active)
 
     VCR.use_cassette("check_symbols_prices_job") do
-      perform_enqueued_jobs do
-        CheckSymbolsPricesJob.perform_later
+      assert_delivery_enqueued(AlertDelivery, :triggered, count: 2) do
+        perform_enqueued_jobs do
+          CheckSymbolsPricesJob.perform_later
+        end
       end
     end
 
@@ -19,6 +21,7 @@ class CheckSymbolsPricesJobTest < ActiveJob::TestCase
 
     assert_equal "completed", ethusdt.status
     assert_equal "completed", btcusdt.status
+
   end
 
   test "process only active alerts" do
@@ -29,8 +32,10 @@ class CheckSymbolsPricesJobTest < ActiveJob::TestCase
     btcusdt.update_columns(price_threshold: 116_652, status: :active)
 
     VCR.use_cassette("check_symbols_prices_job") do
-      perform_enqueued_jobs do
-        CheckSymbolsPricesJob.perform_later
+      assert_delivery_enqueued(AlertDelivery, :triggered, count: 1) do
+        perform_enqueued_jobs do
+          CheckSymbolsPricesJob.perform_later
+        end
       end
     end
 
@@ -49,8 +54,10 @@ class CheckSymbolsPricesJobTest < ActiveJob::TestCase
     btcusdt.update_columns(price_threshold: 116_652, status: :active)
 
     VCR.use_cassette("check_symbols_prices_job") do
-      perform_enqueued_jobs do
-        CheckSymbolsPricesJob.perform_later
+      assert_delivery_enqueued(AlertDelivery, :triggered, count: 1) do
+        perform_enqueued_jobs do
+          CheckSymbolsPricesJob.perform_later
+        end
       end
     end
 
