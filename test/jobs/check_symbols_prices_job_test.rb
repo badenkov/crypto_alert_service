@@ -1,6 +1,8 @@
 require "test_helper"
 
 class CheckSymbolsPricesJobTest < ActiveJob::TestCase
+  include ActionMailer::TestHelper
+
   test "process all suitable alerts" do
     ethusdt = alerts(:ethusdt)
     btcusdt = alerts(:btcusdt)
@@ -21,7 +23,6 @@ class CheckSymbolsPricesJobTest < ActiveJob::TestCase
 
     assert_equal "completed", ethusdt.status
     assert_equal "completed", btcusdt.status
-
   end
 
   test "process only active alerts" do

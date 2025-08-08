@@ -390,7 +390,7 @@ DEPENDENCIES
   http (~> 5.3)
   importmap-rails
   jbuilder
-  letter_opener_web
+  letter_opener_web (~> 3.0)
   puma (>= 5.0)
   rails (~> 7.2.2, >= 7.2.2.1)
   rubocop-rails-omakase

@@ -7,7 +7,7 @@ class AlertWebhookNotifier < ApplicationNotifier
   def triggered
     notification(
       body: {
-        hello_world: true,
+        hello_world: true
       },
       subject: "Hello, world!"
     )
