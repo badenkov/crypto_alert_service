@@ -1,0 +1,21 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.binance.com/api/v3/ticker/price?symbol=ETHUSDT
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json;charset=UTF-8
+    body:
+      encoding: UTF-8
+      string: '{"symbol":"ETHUSDT","price":"3918.71000000"}'
+  recorded_at: Fri, 08 Aug 2025 07:41:22 GMT
+recorded_with: VCR 6.3.1

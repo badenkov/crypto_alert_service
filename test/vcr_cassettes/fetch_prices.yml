@@ -1,0 +1,21 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.binance.com/api/v3/ticker/price?symbols=%5B%22BTCUSDT%22,%22BNBUSDT%22%5D
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json;charset=UTF-8
+    body:
+      encoding: UTF-8
+      string: '[{"symbol":"BTCUSDT","price":"116900.01000000"},{"symbol":"BNBUSDT","price":"789.83000000"}]'
+  recorded_at: Fri, 08 Aug 2025 07:41:21 GMT
+recorded_with: VCR 6.3.1
