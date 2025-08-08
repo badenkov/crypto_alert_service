@@ -24,8 +24,8 @@ class CheckSymbolsPricesJob < ApplicationJob
     alerts = Alert.active.merge(scope) || []
 
     alerts.each do |alert|
-      # TODO send notification
       alert.completed!
+      AlertMailer.with(alert: alert).triggered.deliver_now
     end
   end
 end

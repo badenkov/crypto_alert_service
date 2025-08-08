@@ -1,6 +1,8 @@
 require "test_helper"
 
 class CheckSymbolsPricesJobTest < ActiveJob::TestCase
+  include ActionMailer::TestHelper
+
   test "process all suitable alerts" do
     ethusdt = alerts(:ethusdt)
     btcusdt = alerts(:btcusdt)
@@ -9,8 +11,10 @@ class CheckSymbolsPricesJobTest < ActiveJob::TestCase
     btcusdt.update_columns(price_threshold: 116_652, status: :active)
 
     VCR.use_cassette("check_symbols_prices_job") do
-      perform_enqueued_jobs do
-        CheckSymbolsPricesJob.perform_later
+      assert_emails 2 do
+        perform_enqueued_jobs do
+          CheckSymbolsPricesJob.perform_later
+        end
       end
     end
 

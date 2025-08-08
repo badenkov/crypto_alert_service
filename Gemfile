@@ -53,6 +53,8 @@ group :development do
 
   # Highlight the fine-grained location where an error occurred [https://github.com/ruby/error_highlight]
   gem "error_highlight", ">= 0.4.0", platforms: [ :ruby ]
+
+  gem "letter_opener_web", "~> 3.0"
 end
 
 group :test do
@@ -65,3 +67,4 @@ group :test do
 end
 
 gem "solid_queue", "~> 1.2"
+
