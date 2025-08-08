@@ -8,7 +8,7 @@ class GeneratePriceThresholdJob < ApplicationJob
                         current_price(alert.symbol) - alert.threshold
     end
 
-    alert.update_columns(price_threshold: price_threshold)
+    alert.update_columns(price_threshold: price_threshold, status: :active)
   end
 
   private

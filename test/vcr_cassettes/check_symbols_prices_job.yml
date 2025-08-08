@@ -1,0 +1,39 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.binance.com/api/v3/ticker/price?symbols=%5B%22BTCUSDT%22,%22ETHUSDT%22%5D
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json;charset=UTF-8
+    body:
+      encoding: UTF-8
+      string: '[{"symbol":"BTCUSDT","price":"116651.71000000"},{"symbol":"ETHUSDT","price":"3896.61000000"}]'
+  recorded_at: Fri, 08 Aug 2025 09:50:47 GMT
+- request:
+    method: get
+    uri: https://api.binance.com/api/v3/ticker/price?symbols=%5B%22BTCUSDT%22,%22ETHUSDT%22%5D
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json;charset=UTF-8
+    body:
+      encoding: UTF-8
+      string: '[{"symbol":"BTCUSDT","price":"116659.99000000"},{"symbol":"ETHUSDT","price":"3897.58000000"}]'
+  recorded_at: Fri, 08 Aug 2025 09:50:51 GMT
+recorded_with: VCR 6.3.1

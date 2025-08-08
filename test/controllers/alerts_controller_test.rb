@@ -20,6 +20,8 @@ class AlertsControllerTest < ActionDispatch::IntegrationTest
       post alerts_url, params: { alert: { direction: @alert.direction, symbol: @alert.symbol, threshold: @alert.threshold } }
     end
 
+    assert_enqueued_with(job: GeneratePriceThresholdJob)
+
     assert_redirected_to alert_url(Alert.last)
   end
 
@@ -35,7 +37,9 @@ class AlertsControllerTest < ActionDispatch::IntegrationTest
 
   test "should update alert" do
     patch alert_url(@alert), params: { alert: { direction: @alert.direction, symbol: @alert.symbol, threshold: @alert.threshold } }
+
     assert_redirected_to alert_url(@alert)
+    assert_enqueued_with(job: GeneratePriceThresholdJob)
   end
 
   test "should destroy alert" do

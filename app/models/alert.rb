@@ -1,4 +1,5 @@
 class Alert < ApplicationRecord
+  enum :status, %w[ pending active completed ].index_by(&:itself), default: :pending
   enum :direction, %w[ up down ]
 
   validates :symbol, presence: true, inclusion: { in: %w[ ETHUSDT BTCUSDT ] }
