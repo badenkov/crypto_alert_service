@@ -13,6 +13,7 @@ class Alert < ApplicationRecord
             allow_blank: true
 
   after_commit :generate_price_threshold
+  after_commit :send_notification
 
   private
     def generate_price_threshold
@@ -21,5 +22,11 @@ class Alert < ApplicationRecord
 
     def accepted_symbols
       %w[ ETHUSDT BTCUSDT ]
+    end
+
+    def send_notification
+      if saved_change_to_status? && status == "completed"
+        AlertMailer.with(alert: self).triggered.deliver_now
+      end
     end
 end
