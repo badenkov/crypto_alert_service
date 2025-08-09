@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_08_08_104344) do
+ActiveRecord::Schema[7.2].define(version: 2025_08_08_153408) do
   create_table "alerts", force: :cascade do |t|
     t.string "symbol"
     t.decimal "threshold", precision: 15, scale: 10
@@ -19,5 +19,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_08_08_104344) do
     t.datetime "updated_at", null: false
     t.decimal "price_threshold"
     t.string "status", default: "pending", null: false
+    t.string "email_address"
+    t.string "webhook_url"
   end
 end

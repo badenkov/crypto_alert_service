@@ -5,11 +5,14 @@ class AlertWebhookNotifier < ApplicationNotifier
   end
 
   def triggered
+    binding.irb
+    # return if true
     notification(
       body: {
-        hello_world: true
+        alert: {
+          result: :ok
+        }
       },
-      subject: "Hello, world!"
     )
   end
 end

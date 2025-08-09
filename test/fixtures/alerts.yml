@@ -4,8 +4,12 @@ ethusdt:
   symbol: ETHUSDT
   threshold: 1
   direction: up
+  email_address: user@example.test
+  webhook_url:
 
 btcusdt:
   symbol: BTCUSDT
   threshold: 1
   direction: down
+  email_address:
+  webhook_url: https://example.test

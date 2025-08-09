@@ -5,6 +5,12 @@ class Alert < ApplicationRecord
   validates :symbol, presence: true, inclusion: { in: %w[ ETHUSDT BTCUSDT ] }
   validates :threshold, presence: true, numericality: { greater_than: 0 }
   validates :direction, presence: true
+  validates :email_address,
+            format: { with: URI::MailTo::EMAIL_REGEXP },
+            allow_blank: true
+  validates :webhook_url,
+            format: { with: URI::DEFAULT_PARSER.make_regexp(%w[http https]) },
+            allow_blank: true
 
   after_commit :generate_price_threshold
 
