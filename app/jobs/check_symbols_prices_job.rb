@@ -25,7 +25,6 @@ class CheckSymbolsPricesJob < ApplicationJob
 
     alerts.each do |alert|
       alert.completed!
-      AlertMailer.with(alert: alert).triggered.deliver_now
     end
   end
 end
