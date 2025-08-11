@@ -17,7 +17,7 @@ class Alert < ApplicationRecord
   after_commit :send_notification
 
   scope :ordered, -> { order(id: :desc) }
-  
+
   broadcasts_to ->(alert) { [ "alerts" ] }, inserts_by: :prepend
 
   cattr_reader :available_symbols do

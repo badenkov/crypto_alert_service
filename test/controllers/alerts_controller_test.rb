@@ -22,7 +22,7 @@ class AlertsControllerTest < ActionDispatch::IntegrationTest
 
     assert_enqueued_with(job: GeneratePriceThresholdJob)
 
-    assert_redirected_to alert_url(Alert.last)
+    assert_redirected_to alerts_url
   end
 
   test "should show alert" do
