@@ -67,3 +67,5 @@ group :test do
   gem "webmock", "~> 3.25"
   gem "vcr", "~> 6.3"
 end
+
+gem "hotwire_combobox", "~> 0.4.0"

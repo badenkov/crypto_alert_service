@@ -2,7 +2,10 @@
 
 <% content_for :title, "Alerts" %>
 
-<h1>Alerts</h1>
+<div style="display: flex; align-items: center">
+  <h1 style="margin: 0 10px 0 0;">Alerts</h1>
+  <%= link_to "New alert", new_alert_path %>
+</div>
 
 <div id="alerts">
   <% @alerts.each do |alert| %>
@@ -17,4 +20,3 @@
   <% end %>
 </div>
 
-<%= link_to "New alert", new_alert_path %>

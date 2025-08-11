@@ -131,6 +131,11 @@ GEM
     globalid (1.2.1)
       activesupport (>= 6.1)
     hashdiff (1.2.0)
+    hotwire_combobox (0.4.0)
+      platform_agent (>= 1.0.1)
+      rails (>= 7.0.7.2)
+      stimulus-rails (>= 1.2)
+      turbo-rails (>= 1.2)
     http (5.3.1)
       addressable (~> 2.8)
       http-cookie (~> 1.0)
@@ -227,6 +232,9 @@ GEM
     parser (3.3.9.0)
       ast (~> 2.4.1)
       racc
+    platform_agent (1.0.1)
+      activesupport (>= 5.2.0)
+      useragent (~> 0.16.3)
     pp (0.6.2)
       prettyprint
     prettyprint (0.2.0)
@@ -409,6 +417,7 @@ DEPENDENCIES
   brakeman
   capybara
   debug
+  hotwire_combobox (~> 0.4.0)
   http (~> 5.3)
   importmap-rails
   jbuilder

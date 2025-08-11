@@ -7,6 +7,8 @@
   <p>
     <strong>Threshold:</strong>
     <%= alert.threshold %>
+
+    <% if alert.active? %>(<%= alert.price_threshold %>)<% end %>
   </p>
 
   <p>
@@ -14,4 +16,8 @@
     <%= alert.direction %>
   </p>
 
+  <p>
+    <strong>Status:</strong>
+    <%= alert.status %>
+  </p>
 </div>

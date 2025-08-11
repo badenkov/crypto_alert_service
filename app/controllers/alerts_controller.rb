@@ -36,6 +36,8 @@ class AlertsController < ApplicationController
 
   # PATCH/PUT /alerts/1 or /alerts/1.json
   def update
+    @alert.status = "pending"
+
     respond_to do |format|
       if @alert.update(alert_params)
         format.html { redirect_to @alert, notice: "Alert was successfully updated." }
@@ -65,6 +67,6 @@ class AlertsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def alert_params
-      params.require(:alert).permit(:symbol, :threshold, :direction, :email_address, :webhook)
+      params.expect(alert: [ :symbol, :threshold, :direction, :email_address, :webhook_url ])
     end
 end
