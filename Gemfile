@@ -69,3 +69,4 @@ group :test do
 end
 
 gem "hotwire_combobox", "~> 0.4.0"
+gem "freezolite", "~> 0.6.0"
