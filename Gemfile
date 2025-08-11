@@ -57,7 +57,6 @@ end
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
-  gem "letter_opener_web", "~> 3.0"
 end
 
 group :test do
@@ -68,5 +67,6 @@ group :test do
   gem "vcr", "~> 6.3"
 end
 
+gem "letter_opener_web", "~> 3.0"
 gem "hotwire_combobox", "~> 0.4.0"
 gem "freezolite", "~> 0.6.0"
