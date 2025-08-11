@@ -1,22 +1,17 @@
+<%= turbo_stream_from "alerts" %>
+
 <p style="color: green"><%= notice %></p>
 
 <% content_for :title, "Alerts" %>
 
 <div style="display: flex; align-items: center">
   <h1 style="margin: 0 10px 0 0;">Alerts</h1>
-  <%= link_to "New alert", new_alert_path %>
+  <%= link_to "New alert", new_alert_path, data: { turbo_frame: dom_id(Alert.new) } %>
 </div>
 
-<div id="alerts">
-  <% @alerts.each do |alert| %>
+<%= turbo_frame_tag Alert.new %>
 
-    <%= render alert %>
-
-    <p>
-      <%= link_to "Show this alert", alert %> |
-
-      <%= link_to "Edit this alert", edit_alert_path(alert) %>
-    </p>
-  <% end %>
-</div>
+<%= turbo_frame_tag "alerts" do %>
+  <%= render @alerts %>
+<% end %>
 

@@ -3,12 +3,12 @@ class GeneratePriceThresholdJob < ApplicationJob
 
   def perform(alert)
     price_threshold = if alert.up?
-                        current_price(alert.symbol) + alert.threshold
+      current_price(alert.symbol) + alert.threshold
     else
-                        current_price(alert.symbol) - alert.threshold
+      current_price(alert.symbol) - alert.threshold
     end
 
-    alert.update_columns(price_threshold: price_threshold, status: :active)
+    alert.update!(price_threshold: price_threshold, status: :active)
   end
 
   private

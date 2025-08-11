@@ -3,7 +3,7 @@ class AlertsController < ApplicationController
 
   # GET /alerts or /alerts.json
   def index
-    @alerts = Alert.all
+    @alerts = Alert.ordered
   end
 
   # GET /alerts/1 or /alerts/1.json
@@ -25,7 +25,7 @@ class AlertsController < ApplicationController
 
     respond_to do |format|
       if @alert.save
-        format.html { redirect_to @alert, notice: "Alert was successfully created." }
+        format.html { redirect_to alerts_path, notice: "Alert was successfully created." }
         format.json { render :show, status: :created, location: @alert }
       else
         format.html { render :new, status: :unprocessable_entity }

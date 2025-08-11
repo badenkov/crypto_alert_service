@@ -1,23 +1,35 @@
-<div id="<%= dom_id alert %>">
-  <p>
-    <strong>Symbol:</strong>
-    <%= alert.symbol %>
-  </p>
+<%= turbo_frame_tag alert do %>
+  <div class="alert">
+    <p>
+      <strong>Symbol:</strong>
+      <%= alert.symbol %>
+    </p>
 
-  <p>
-    <strong>Threshold:</strong>
-    <%= alert.threshold %>
+    <p>
+      <strong>Threshold:</strong>
+      <%= alert.threshold %>
 
-    <% if alert.active? %>(<%= alert.price_threshold %>)<% end %>
-  </p>
+      <% if alert.active? %>(<%= alert.price_threshold %>)<% end %>
+    </p>
 
-  <p>
-    <strong>Direction:</strong>
-    <%= alert.direction %>
-  </p>
+    <p>
+      <strong>Direction:</strong>
+      <%= alert.direction %>
+    </p>
 
-  <p>
-    <strong>Status:</strong>
-    <%= alert.status %>
-  </p>
-</div>
+    <p>
+      <strong>Status:</strong>
+      <%= alert.status %>
+    </p>
+
+    <div style="display: flex;">
+      <div>
+        <%= link_to "Edit this alert", edit_alert_path(alert) %> |
+      </div>
+      <div>
+        <%= button_to "Delete", alert_path(alert), method: :delete %>
+      </div>
+    </div>
+
+  </div>
+<% end %>

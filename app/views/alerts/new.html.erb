@@ -1,11 +1,16 @@
 <% content_for :title, "New alert" %>
 
-<h1>New alert</h1>
+<%= turbo_frame_tag Alert.new do %>
+  <div style="border: 1px solid #ccc; padding 10px;">
 
-<%= render "form", alert: @alert %>
+    <h1>New alert</h1>
 
-<br>
+    <%= render "form", alert: @alert %>
 
-<div>
-  <%= link_to "Back to alerts", alerts_path %>
-</div>
+    <br>
+
+    <div>
+      <%= link_to "Back to alerts", alerts_path %>
+    </div>
+  </div>
+<% end %>

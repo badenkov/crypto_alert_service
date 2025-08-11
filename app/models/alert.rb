@@ -16,6 +16,10 @@ class Alert < ApplicationRecord
   after_commit :generate_price_threshold
   after_commit :send_notification
 
+  scope :ordered, -> { order(id: :desc) }
+  
+  broadcasts_to ->(alert) { [ "alerts" ] }, inserts_by: :prepend
+
   cattr_reader :available_symbols do
     file_path = Rails.root.join("lib", "available_symbols.json")
     JSON.load_file(file_path, symbolize_names: true)
