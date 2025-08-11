@@ -20,7 +20,7 @@ class AlertWebhookNotifierTest < ActiveSupport::TestCase
         alert: {
           id: @alert.id,
           symbol: @alert.symbol
-        },
+        }
       }.to_json
   end
 end

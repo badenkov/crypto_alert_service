@@ -18,4 +18,4 @@ class AlertDelivery < ApplicationDelivery
     def ensure_webhook_enabled
       params[:alert].webhook_url.present?
     end
-end 
+end

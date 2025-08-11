@@ -1,6 +1,6 @@
 class AlertWebhookNotifier < ApplicationNotifier
   self.driver = proc do |data|
-    data => { body: , url: }
+    data => { body:, url: }
     next if url.blank?
 
     HTTP.post(url, json: body)
@@ -13,7 +13,7 @@ class AlertWebhookNotifier < ApplicationNotifier
       body: {
         alert: {
           id: alert.id,
-          symbol: alert.symbol,
+          symbol: alert.symbol
         }
       },
       url: alert.webhook_url
