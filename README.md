@@ -1,5 +1,7 @@
 # Crypto Alert Service
 
+[![CI](https://github.com/badenkov/crypto_alert_service/actions/workflows/ci.yml/badge.svg)](https://github.com/badenkov/crypto_alert_service/actions/workflows/ci.yml)
+
 This is a test task (homework).
 Build a personal crypto-alert service
 
