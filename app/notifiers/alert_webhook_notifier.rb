@@ -1,18 +1,22 @@
 class AlertWebhookNotifier < ApplicationNotifier
   self.driver = proc do |data|
-    data => { body: }
-    HTTP.post("https://webhook.site/ac63997c-fe71-47f5-8fda-5ba3f761defc", json: body)
+    data => { body: , url: }
+    next if url.blank?
+
+    HTTP.post(url, json: body)
   end
 
   def triggered
-    binding.irb
-    # return if true
+    params => { alert: }
+
     notification(
       body: {
         alert: {
-          result: :ok
+          id: alert.id,
+          symbol: alert.symbol,
         }
       },
+      url: alert.webhook_url
     )
   end
 end

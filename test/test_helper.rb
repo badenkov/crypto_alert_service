@@ -1,6 +1,7 @@
 ENV["RAILS_ENV"] ||= "test"
 require_relative "../config/environment"
 require "rails/test_help"
+require 'webmock/minitest'
 
 VCR.configure do |config|
   config.cassette_library_dir = "test/vcr_cassettes"
@@ -40,5 +41,7 @@ module ActiveSupport
 
     # Add more helper methods to be used by all tests here...
     include ActiveDelivery::TestHelper
+    include ActiveDeliveryTestHelpers
+    include AbstractNotifier::TestHelper
   end
 end

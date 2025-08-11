@@ -65,6 +65,6 @@ class AlertsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def alert_params
-      params.require(:alert).permit(:symbol, :threshold, :direction)
+      params.require(:alert).permit(:symbol, :threshold, :direction, :email_address, :webhook)
     end
 end

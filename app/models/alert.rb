@@ -26,7 +26,7 @@ class Alert < ApplicationRecord
 
     def send_notification
       if saved_change_to_status? && status == "completed"
-        AlertMailer.with(alert: self).triggered.deliver_now
+        AlertDelivery.with(alert: self).triggered.deliver_now
       end
     end
 end

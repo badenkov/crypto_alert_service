@@ -1,17 +1,30 @@
 require "test_helper"
 
 class AlertDeliveryTest < ActiveSupport::TestCase
-  test "test" do
+  test "send notifications" do
     alert = alerts(:ethusdt)
+    alert.update_columns(email_address: "test@test.test", webhook_url: "https://webhook.test.test")
 
-    # ActiveDelivery::TestDelivery.enable do
-    assert_delivery_enqueued(AlertDelivery, :triggered, count: 1) do
-      AlertDelivery.with(alert:).triggered.deliver_later
-    end
+    AlertDelivery.with(alert: alert).triggered.deliver_now
 
-    s = ActiveDelivery::TestDelivery.store
-    l = ActiveDelivery::TestDelivery.lines
+    assert_deliveries_via :mailer, :webhook
+  end
 
-    # binding.irb
+  test "send only webhook if email is blank" do
+    alert = alerts(:ethusdt)
+    alert.update_columns(email_address: "", webhook_url: "https://webhook.test.test")
+
+    AlertDelivery.with(alert: alert).triggered.deliver_now
+
+    assert_deliveries_via_only :webhook
+  end
+
+  test "send only email if webhook url is blank" do
+    alert = alerts(:ethusdt)
+    alert.update_columns(email_address: "test@test.test", webhook_url: "")
+
+    AlertDelivery.with(alert: alert).triggered.deliver_now
+
+    assert_deliveries_via_only :mailer
   end
 end

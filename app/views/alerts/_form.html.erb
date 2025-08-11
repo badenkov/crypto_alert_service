@@ -30,6 +30,18 @@
     <%= form.radio_button :direction, "down" %>
     <%= form.label :direction, "down" %>
   </div>
+  
+  <h2>Notifications</h2>
+
+  <div>
+    <%= form.label :email_address, style: "display: block" %>
+    <%= form.number_field :email_address %>
+  </div>
+
+  <div>
+    <%= form.label :webhook_url, style: "display: block" %>
+    <%= form.number_field :webhook_url %>
+  </div>
 
   <div>
     <%= form.submit %>
